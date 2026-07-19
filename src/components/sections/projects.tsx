@@ -20,10 +20,11 @@ function Thumbnail({ project }: { project: Project }) {
     );
   }
 
-  // No live site to screenshot: a quiet monogram stands in.
+  // No live site to screenshot: a monogram stands in. Uses `muted` rather
+  // than a border token so it clears WCAG AA contrast in both themes.
   return (
     <div className="flex h-full items-center justify-center">
-      <span className="font-display text-4xl font-bold text-edge-strong">
+      <span className="font-display text-4xl font-bold text-muted">
         {project.name.slice(0, 2)}
       </span>
     </div>
