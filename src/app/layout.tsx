@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
-import { profile } from "@/content";
+import { StructuredData } from "@/components/structured-data";
+import { profile, roles } from "@/content";
+import { siteUrl } from "@/lib/site";
 import "./globals.css";
 
 const bricolage = Bricolage_Grotesque({
@@ -19,12 +21,42 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const currentRole = roles.find((role) => role.end === null);
+
+const title = `${profile.name} - ${profile.title}`;
+const description = `${profile.title} in ${profile.location} with 5+ years building high-traffic web applications in React, Next.js, and TypeScript${
+  currentRole ? `. Currently at ${currentRole.company}` : ""
+}.`;
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
-    default: `${profile.name} - ${profile.title}`,
+    default: title,
     template: `%s - ${profile.name}`,
   },
-  description: profile.summary,
+  description,
+  applicationName: profile.name,
+  authors: [{ name: profile.name, url: siteUrl }],
+  creator: profile.name,
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    siteName: profile.name,
+    title,
+    description,
+    url: siteUrl,
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
+  },
 };
 
 export default function RootLayout({
@@ -46,6 +78,7 @@ export default function RootLayout({
           Skip to content
         </a>
         <ThemeProvider>{children}</ThemeProvider>
+        <StructuredData />
       </body>
     </html>
   );
