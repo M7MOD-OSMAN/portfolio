@@ -28,9 +28,7 @@ export function Hero() {
         </Reveal>
         <Reveal delay={0.24}>
           <div className="flex flex-wrap gap-3">
-            <ButtonLink href={`mailto:${profile.email}`}>
-              Get in touch
-            </ButtonLink>
+            <ButtonLink href="#contact">Get in touch</ButtonLink>
             <ButtonLink href="#projects" variant="secondary">
               View projects
             </ButtonLink>

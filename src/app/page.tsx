@@ -4,6 +4,7 @@ import { Hero } from "@/components/sections/hero";
 import { Experience } from "@/components/sections/experience";
 import { Projects } from "@/components/sections/projects";
 import { Skills } from "@/components/sections/skills";
+import { Contact } from "@/components/sections/contact";
 
 export default function Home() {
   return (
@@ -15,9 +16,10 @@ export default function Home() {
         <Experience />
         <Projects />
         <Skills />
+        <Contact />
       </main>
 
-      <footer id="contact" className="scroll-mt-16 border-t border-edge">
+      <footer className="border-t border-edge">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-4 px-6 py-10 text-sm text-muted md:flex-row md:items-center md:justify-between md:px-10">
           <span>
             © {new Date().getFullYear()} {profile.name} · {profile.location}
