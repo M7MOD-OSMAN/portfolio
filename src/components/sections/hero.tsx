@@ -1,10 +1,11 @@
 import Image from "next/image";
-import { profile, roles } from "@/content";
+import { profile } from "@/content";
+import { getCurrentRole } from "@/content/loaders";
 import { ButtonLink } from "@/components/ui/button";
 import { Rise } from "@/components/ui/rise";
 
-export function Hero() {
-  const currentRole = roles.find((role) => role.end === null);
+export async function Hero() {
+  const currentRole = await getCurrentRole();
 
   return (
     <section className="mx-auto grid w-full max-w-6xl items-center gap-12 px-6 pt-14 pb-24 md:grid-cols-[minmax(0,1fr)_minmax(0,24rem)] md:px-10 md:pt-20 md:pb-32">

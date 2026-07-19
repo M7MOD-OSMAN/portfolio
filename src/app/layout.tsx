@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, Geist, Geist_Mono } from "next/font/google";
-import { ThemeProvider } from "@/components/theme-provider";
-import { StructuredData } from "@/components/structured-data";
-import { profile, roles } from "@/content";
+import { profile } from "@/content";
+import { getCurrentRole } from "@/content/loaders";
 import { siteUrl } from "@/lib/site";
 import "./globals.css";
 
@@ -21,43 +20,47 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const currentRole = roles.find((role) => role.end === null);
-
 const title = `${profile.name} - ${profile.title}`;
-const description = `${profile.title} in ${profile.location} with 5+ years building high-traffic web applications in React, Next.js, and TypeScript${
-  currentRole ? `. Currently at ${currentRole.company}` : ""
-}.`;
 
-export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
-  title: {
-    default: title,
-    template: `%s - ${profile.name}`,
-  },
-  description,
-  applicationName: profile.name,
-  authors: [{ name: profile.name, url: siteUrl }],
-  creator: profile.name,
-  alternates: { canonical: "/" },
-  openGraph: {
-    type: "website",
-    siteName: profile.name,
-    title,
+export async function generateMetadata(): Promise<Metadata> {
+  // The current employer comes from the CMS, so the description is built here
+  // rather than at module scope.
+  const currentRole = await getCurrentRole();
+  const description = `${profile.title} in ${profile.location} with 5+ years building high-traffic web applications in React, Next.js, and TypeScript${
+    currentRole ? `. Currently at ${currentRole.company}` : ""
+  }.`;
+
+  return {
+    metadataBase: new URL(siteUrl),
+    title: {
+      default: title,
+      template: `%s - ${profile.name}`,
+    },
     description,
-    url: siteUrl,
-    locale: "en_US",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title,
-    description,
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: { index: true, follow: true, "max-image-preview": "large" },
-  },
-};
+    applicationName: profile.name,
+    authors: [{ name: profile.name, url: siteUrl }],
+    creator: profile.name,
+    alternates: { canonical: "/" },
+    openGraph: {
+      type: "website",
+      siteName: profile.name,
+      title,
+      description,
+      url: siteUrl,
+      locale: "en_US",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: { index: true, follow: true, "max-image-preview": "large" },
+    },
+  };
+}
 
 export default function RootLayout({
   children,
@@ -70,16 +73,7 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${bricolage.variable} ${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col">
-        <a
-          href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-full focus:bg-foreground focus:px-4 focus:py-2 focus:text-background"
-        >
-          Skip to content
-        </a>
-        <ThemeProvider>{children}</ThemeProvider>
-        <StructuredData />
-      </body>
+      <body className="flex min-h-full flex-col">{children}</body>
     </html>
   );
 }

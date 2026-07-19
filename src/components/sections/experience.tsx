@@ -1,10 +1,12 @@
-import { education, roles } from "@/content";
+import { getEducation, getRoles } from "@/content/loaders";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { Reveal } from "@/components/ui/reveal";
 import { formatRange } from "@/lib/date";
 import { cn } from "@/lib/cn";
 
-export function Experience() {
+export async function Experience() {
+  const [roles, education] = await Promise.all([getRoles(), getEducation()]);
+
   return (
     <Section id="experience" className="scroll-mt-16 border-t border-edge">
       <Reveal>
@@ -17,7 +19,7 @@ export function Experience() {
           const isLast = index === roles.length - 1;
 
           return (
-            <li key={`${role.company}-${role.start}`}>
+            <li key={role.id ?? `${role.company}-${role.start}`}>
               <Reveal className="grid gap-x-10 md:grid-cols-[10rem_minmax(0,1fr)]">
                 <div className="flex flex-col gap-1 pb-3 md:pt-0.5 md:pb-0">
                   <span className="font-mono text-sm text-muted">
@@ -85,7 +87,7 @@ export function Experience() {
 
       {education.map((item) => (
         <Reveal
-          key={item.institution}
+          key={item.id ?? item.institution}
           className="mt-4 flex flex-col gap-x-10 gap-y-1 border-t border-edge pt-8 md:grid md:grid-cols-[10rem_minmax(0,1fr)]"
         >
           <span className="font-mono text-sm text-muted">

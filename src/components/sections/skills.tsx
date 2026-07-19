@@ -1,10 +1,14 @@
-import { profile, roles, skillGroups } from "@/content";
+import { profile } from "@/content";
+import { getCurrentRole, getSkillGroups } from "@/content/loaders";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { Reveal } from "@/components/ui/reveal";
 import { cn } from "@/lib/cn";
 
-export function Skills() {
-  const currentRole = roles.find((role) => role.end === null);
+export async function Skills() {
+  const [skillGroups, currentRole] = await Promise.all([
+    getSkillGroups(),
+    getCurrentRole(),
+  ]);
 
   return (
     <Section id="skills" className="scroll-mt-16 border-t border-edge">
@@ -53,7 +57,7 @@ export function Skills() {
 
             return (
               <Reveal
-                key={group.label}
+                key={group.id ?? group.label}
                 delay={index * 0.05}
                 className={cn(
                   "flex flex-col gap-4 py-7 md:flex-row md:gap-10",
