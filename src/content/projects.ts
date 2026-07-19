@@ -38,9 +38,11 @@ export const projects: Project[] = [
   },
   {
     name: "SpeakUp",
+    url: "https://speakup.mountainviewegypt.com/",
     description:
       "Secure internal complaints platform where employees can raise concerns about anyone, including the CEO, via messages, voice notes, and file attachments, audited by a neutral agency (IBS). React frontend with a PHP/MySQL backend.",
     featured: false,
+    image: "/images/projects/speakup.jpg",
   },
   {
     name: "Eyes and Birds",

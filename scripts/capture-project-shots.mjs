@@ -23,6 +23,7 @@ const sites = [
   ["almaidan", "https://almaidan.com/"],
   ["skyloov", "https://www.skyloov.com/"],
   ["lighthouse", "https://www.mountainviewegypt.com/"],
+  ["speakup", "https://speakup.mountainviewegypt.com/"],
   ["paris-gallery", "https://www.parisgalleryme.com/"],
   ["alkhunaizan", "https://www.alkhunaizan.sa/"],
   ["inovva", "https://innovapharmacy.com/"],
