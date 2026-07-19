@@ -69,6 +69,27 @@ html {
   scroll-behavior: smooth;
 }
 
+/*
+ * Entrance animation for above-the-fold content. Pure CSS on purpose: the
+ * JS-driven <Reveal> cannot paint until React hydrates, which pushed the
+ * hero portrait's LCP render delay to ~1.9s. `both` fill mode means the
+ * reduced-motion override below still lands on the final state.
+ */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.animate-rise {
+  animation: rise 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
