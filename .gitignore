@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+
+# Next.js
+.next/
+out/
+next-env.d.ts
+
+# Builds
+dist/
+build/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Vercel
+.vercel
+
+# Netlify (legacy)
+.netlify
+
+# System
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+
+# Original author's personal documents — kept on disk for nothing, never committed
+legacy/Bryan-Elliott_resume_2025-latest.pdf
+legacy/elliott-ai/documents/

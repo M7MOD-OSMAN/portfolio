@@ -1,0 +1,34 @@
+{
+  "name": "elliottprogrammer.com",
+  "version": "1.0.0",
+  "description": "Elliottprogrammer.com - Dev Portfolio Website of Bryan Elliott (elliottprogrammer), Senior Full-stack Software Engineer.",
+  "homepage": "https://github.com/elliottprogrammer/elliottprogrammer.com#readme",
+  "bugs": {
+    "url": "https://github.com/elliottprogrammer/elliottprogrammer.com/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elliottprogrammer/elliottprogrammer.com.git"
+  },
+  "license": "UNLICENSED",
+  "author": "Bryan Elliott <bryan@elliottprogrammer.com>",
+  "type": "commonjs",
+  "main": "index.html",
+  "scripts": {
+    "start": "netlify dev"
+  },
+  "dependencies": {
+    "@dqbd/tiktoken": "^1.0.22",
+    "@langchain/openai": "^1.2.0",
+    "@netlify/blobs": "^10.5.0",
+    "@netlify/functions": "^5.1.2",
+    "@supabase/supabase-js": "^2.89.0"
+  },
+  "devDependencies": {
+    "@langchain/classic": "^1.0.7",
+    "@langchain/community": "^1.1.1",
+    "@langchain/core": "^1.1.8",
+    "@langchain/textsplitters": "^1.0.1",
+    "dotenv": "^16.4.5"
+  }
+}
