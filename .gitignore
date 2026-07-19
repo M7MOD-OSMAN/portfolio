@@ -21,9 +21,21 @@ build/
 # Netlify (legacy)
 .netlify
 
+# Testing
+coverage/
+
+# TypeScript
+*.tsbuildinfo
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
 # System
 .DS_Store
 Thumbs.db
+*.pem
 
 # IDE
 .vscode/
