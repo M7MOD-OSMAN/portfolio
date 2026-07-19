@@ -1,13 +1,10 @@
-import { profile, skillGroups } from "@/content";
+import { profile } from "@/content";
 import { SiteHeader } from "@/components/site-header";
 import { Hero } from "@/components/sections/hero";
 import { Experience } from "@/components/sections/experience";
 import { Projects } from "@/components/sections/projects";
-import { Section, SectionHeading } from "@/components/ui/section";
-import { Reveal } from "@/components/ui/reveal";
+import { Skills } from "@/components/sections/skills";
 
-// The Skills section below is still a placeholder layout;
-// its real design lands in the next milestone.
 export default function Home() {
   return (
     <>
@@ -15,36 +12,9 @@ export default function Home() {
 
       <main id="main" className="flex-1">
         <Hero />
-
         <Experience />
-
         <Projects />
-
-        <Section id="skills" className="scroll-mt-16 border-t border-edge">
-          <Reveal>
-            <SectionHeading>Skills</SectionHeading>
-          </Reveal>
-          <div className="mt-10 flex flex-col gap-6">
-            {skillGroups.map((group) => (
-              <Reveal
-                key={group.label}
-                className="flex flex-col gap-2 md:flex-row md:gap-10"
-              >
-                <span className="w-48 shrink-0 font-medium">{group.label}</span>
-                <div className="flex flex-wrap gap-2">
-                  {group.items.map((item) => (
-                    <span
-                      key={item}
-                      className="rounded-full border border-edge px-3 py-1 text-sm text-muted"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </Section>
+        <Skills />
       </main>
 
       <footer id="contact" className="scroll-mt-16 border-t border-edge">
