@@ -8,6 +8,7 @@ export const profile: Profile = {
   phone: "+201017495064",
   summary:
     "Results-driven front-end engineer with over 5 years of experience leading the development and optimization of high-traffic web applications using React, Next.js, and TypeScript. I specialize in defining scalable front-end architecture, establishing reusable component libraries, and driving performance initiatives that have achieved up to 40% faster load times.",
+  portraitSrc: "/images/mahmoud-othman.jpg",
   socials: [
     { label: "GitHub", href: "https://github.com/M7MOD-OSMAN" },
     {

@@ -17,6 +17,8 @@ export interface Profile {
   phone: string;
   /** One-paragraph professional summary. */
   summary: string;
+  /** Public path to the portrait photo (under /public). */
+  portraitSrc: string;
   socials: SocialLink[];
   languages: Language[];
 }

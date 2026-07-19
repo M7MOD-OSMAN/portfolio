@@ -39,36 +39,42 @@ export const projects: Project[] = [
       "Website for a Dubai real-estate broker: premium property portfolio focused on buying, renting, and investment.",
     featured: false,
   },
-  // TODO(mahmoud): add a one-line description of your role/contribution for each
-  // of the following before they can be shown on the site (no invented content).
+  // PLACEHOLDER descriptions below: what each platform is (verified from the
+  // live sites) + a generic frontend-development framing.
+  // TODO(mahmoud): replace with your real contribution details per project.
   {
     name: "Paris Gallery",
     url: "https://www.parisgalleryme.com/",
-    description: "",
+    description:
+      "Frontend development for the e-commerce platform of Paris Gallery, a Middle East luxury retailer offering perfumes, watches, jewelry, and beauty products.",
     featured: false,
   },
   {
     name: "Alkhunaizan",
     url: "https://www.alkhunaizan.sa/",
-    description: "",
+    description:
+      "Frontend development for the online store of Al-Khunaizan, a Saudi retailer specialized in air conditioning and electrical home appliances since 1988.",
     featured: false,
   },
   {
-    name: "Innova Pharmacy",
+    name: "Inovva Pharmacy",
     url: "https://innovapharmacy.com/",
-    description: "",
+    description:
+      "Frontend development for Inovva Pharmacy, an online pharmacy in Saudi Arabia offering medicines, vitamins, and personal-care products with fast nationwide delivery.",
     featured: false,
   },
   {
-    name: "Qasr Alawani",
+    name: "Qasr Al-Awani",
     url: "https://www.qasralawani.net/",
-    description: "",
+    description:
+      "Frontend development for the e-commerce platform of Qasr Al-Awani, a kitchenware and home-appliances retailer operating across the GCC.",
     featured: false,
   },
   {
     name: "SACO",
     url: "https://www.saco.sa/",
-    description: "",
+    description:
+      "Frontend development for the online store of SACO, Saudi Arabia's major home-improvement and hardware retailer with 30+ branches.",
     featured: false,
   },
 ];

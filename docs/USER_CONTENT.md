@@ -97,13 +97,16 @@ empathetic negotiation.
 5. **Eyes and Birds** *(ongoing)* — Dubai real-estate broker site: premium property
    portfolio. ❓ link
 
-### Additional client sites (URLs provided 2026-07-19 — ❓ role/stack/contribution needed for each before they can be showcased)
+### Additional client sites (placeholder descriptions live — ❓ real contribution details still needed from Mahmoud)
 
-6. **Paris Gallery** — https://www.parisgalleryme.com/
-7. **Alkhunaizan** — https://www.alkhunaizan.sa/
-8. **Innova Pharmacy** — https://innovapharmacy.com/
-9. **Qasr Alawani** — https://www.qasralawani.net/
-10. **SACO** — https://www.saco.sa/
+Platform facts verified from the live sites 2026-07-19; role framing is a generic
+"frontend development" placeholder until Mahmoud provides specifics.
+
+6. **Paris Gallery** — https://www.parisgalleryme.com/ — Middle East luxury retailer (perfumes, watches, jewelry, beauty), HQ Jeddah.
+7. **Al-Khunaizan** — https://www.alkhunaizan.sa/ — Saudi air-conditioning & electrical appliances retailer, est. 1988.
+8. **Inovva Pharmacy** — https://innovapharmacy.com/ — Saudi online pharmacy (medicines, vitamins, personal care), fast delivery.
+9. **Qasr Al-Awani** — https://www.qasralawani.net/ — kitchenware & home-appliances e-commerce across the GCC.
+10. **SACO** — https://www.saco.sa/ — Saudi Arabia's major home-improvement/hardware retailer, 30+ branches.
 
 > ❓ Which 3–4 are the flagship case studies for detail pages? Screenshots welcome;
 > for items 6–10 a one-liner each on what Mahmoud built/led is required (not invented).
