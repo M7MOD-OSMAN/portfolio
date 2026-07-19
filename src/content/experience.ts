@@ -11,7 +11,7 @@ export const roles: Role[] = [
     highlights: [
       "Architected and led scalable micro-frontend solutions across SaaS and e-commerce platforms using Next.js, improving component independence and deployment speed.",
       "Established a centralized reusable component library and design system with Storybook/Chromatic, reducing average development cycle time by 15%.",
-      "Drove performance initiatives — code splitting, ISR, and advanced data-fetching strategies — achieving up to 40% faster load times and top Core Web Vitals scores.",
+      "Drove performance initiatives (code splitting, ISR, advanced data-fetching strategies) that achieved up to 40% faster load times and top Core Web Vitals scores.",
       "Led technical discovery and integration planning with UI/UX and backend teams, defining API contracts and data-flow strategies.",
       "Spearheaded TypeScript adoption and mentored 2 junior developers through formalized code review and pair programming.",
     ],
@@ -31,7 +31,7 @@ export const roles: Role[] = [
     end: "2025-11",
     sideEngagement: true,
     highlights: [
-      "Built a full learning platform for a well-known Jordanian YouTuber: course subscriptions and payments, student enrollment, lessons and progress tracking, plus an admin dashboard for courses, content, users, payments, and analytics — scalable, secure, and optimized for high traffic.",
+      "Built a full learning platform for a well-known Jordanian YouTuber: course subscriptions and payments, student enrollment, lessons and progress tracking, plus an admin dashboard for courses, content, users, payments, and analytics. Scalable, secure, and optimized for high traffic.",
     ],
     tech: ["React", "Next.js"],
   },

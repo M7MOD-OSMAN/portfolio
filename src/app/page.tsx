@@ -1,57 +1,20 @@
 import { profile, roles, skillGroups, visibleProjects } from "@/content";
-import { ButtonLink } from "@/components/ui/button";
+import { SiteHeader } from "@/components/site-header";
+import { Hero } from "@/components/sections/hero";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { Reveal } from "@/components/ui/reveal";
-import { ThemeToggle } from "@/components/ui/theme-toggle";
 
-// Placeholder page demonstrating the design system end-to-end.
-// Real section designs land in the upcoming milestones.
+// Experience, Projects, and Skills below are still placeholder layouts;
+// their real designs land in the upcoming milestones.
 export default function Home() {
-  const currentRole = roles.find((role) => role.end === null);
-
   return (
     <>
-      <header className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-6 md:px-10">
-        <span className="font-display text-lg font-bold tracking-tight">
-          {profile.name}
-        </span>
-        <ThemeToggle />
-      </header>
+      <SiteHeader />
 
-      <main className="flex-1">
-        <Section className="py-16 md:py-24">
-          <div className="flex max-w-2xl flex-col gap-6">
-            <h1 className="font-display text-4xl font-bold tracking-tight md:text-6xl">
-              {profile.title}
-              {currentRole ? (
-                <span className="block text-muted">
-                  at {currentRole.company}
-                </span>
-              ) : null}
-            </h1>
-            <p className="max-w-[65ch] leading-relaxed text-muted">
-              {profile.summary}
-            </p>
-            <div className="flex flex-wrap items-center gap-4">
-              <ButtonLink href={`mailto:${profile.email}`}>
-                Get in touch
-              </ButtonLink>
-              {profile.socials.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-sm font-medium text-accent-ink underline-offset-4 hover:underline"
-                >
-                  {social.label}
-                </a>
-              ))}
-            </div>
-          </div>
-        </Section>
+      <main id="main" className="flex-1">
+        <Hero />
 
-        <Section className="border-t border-edge">
+        <Section id="experience" className="scroll-mt-16 border-t border-edge">
           <Reveal>
             <SectionHeading>Experience</SectionHeading>
           </Reveal>
@@ -64,7 +27,7 @@ export default function Home() {
                     <span className="text-muted"> · {role.company}</span>
                   </div>
                   <span className="font-mono text-sm text-muted">
-                    {role.start} – {role.end ?? "now"}
+                    {role.start} - {role.end ?? "now"}
                   </span>
                 </Reveal>
               </li>
@@ -72,7 +35,7 @@ export default function Home() {
           </ul>
         </Section>
 
-        <Section className="border-t border-edge">
+        <Section id="projects" className="scroll-mt-16 border-t border-edge">
           <Reveal>
             <SectionHeading>Projects</SectionHeading>
           </Reveal>
@@ -105,7 +68,7 @@ export default function Home() {
           </div>
         </Section>
 
-        <Section className="border-t border-edge">
+        <Section id="skills" className="scroll-mt-16 border-t border-edge">
           <Reveal>
             <SectionHeading>Skills</SectionHeading>
           </Reveal>
@@ -132,20 +95,30 @@ export default function Home() {
         </Section>
       </main>
 
-      <footer className="border-t border-edge">
-        <div className="mx-auto flex w-full max-w-6xl flex-col gap-2 px-6 py-10 text-sm text-muted md:flex-row md:items-center md:justify-between md:px-10">
+      <footer id="contact" className="scroll-mt-16 border-t border-edge">
+        <div className="mx-auto flex w-full max-w-6xl flex-col gap-4 px-6 py-10 text-sm text-muted md:flex-row md:items-center md:justify-between md:px-10">
           <span>
-            © {new Date().getFullYear()} {profile.name}
+            © {new Date().getFullYear()} {profile.name} · {profile.location}
           </span>
-          <span>
-            {profile.location} ·{" "}
+          <div className="flex flex-wrap items-center gap-4">
+            {profile.socials.map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noreferrer"
+                className="text-accent-ink underline-offset-4 hover:underline"
+              >
+                {social.label}
+              </a>
+            ))}
             <a
               href={`mailto:${profile.email}`}
               className="text-accent-ink underline-offset-4 hover:underline"
             >
               {profile.email}
             </a>
-          </span>
+          </div>
         </div>
       </footer>
     </>
