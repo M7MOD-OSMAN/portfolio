@@ -1,10 +1,11 @@
-import { profile, roles, skillGroups, visibleProjects } from "@/content";
+import { profile, skillGroups, visibleProjects } from "@/content";
 import { SiteHeader } from "@/components/site-header";
 import { Hero } from "@/components/sections/hero";
+import { Experience } from "@/components/sections/experience";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { Reveal } from "@/components/ui/reveal";
 
-// Experience, Projects, and Skills below are still placeholder layouts;
+// Projects and Skills below are still placeholder layouts;
 // their real designs land in the upcoming milestones.
 export default function Home() {
   return (
@@ -14,26 +15,7 @@ export default function Home() {
       <main id="main" className="flex-1">
         <Hero />
 
-        <Section id="experience" className="scroll-mt-16 border-t border-edge">
-          <Reveal>
-            <SectionHeading>Experience</SectionHeading>
-          </Reveal>
-          <ul className="mt-10 flex flex-col divide-y divide-edge">
-            {roles.map((role) => (
-              <li key={`${role.company}-${role.start}`}>
-                <Reveal className="flex flex-col gap-1 py-5 md:flex-row md:items-baseline md:justify-between">
-                  <div>
-                    <span className="font-medium">{role.title}</span>
-                    <span className="text-muted"> · {role.company}</span>
-                  </div>
-                  <span className="font-mono text-sm text-muted">
-                    {role.start} - {role.end ?? "now"}
-                  </span>
-                </Reveal>
-              </li>
-            ))}
-          </ul>
-        </Section>
+        <Experience />
 
         <Section id="projects" className="scroll-mt-16 border-t border-edge">
           <Reveal>
