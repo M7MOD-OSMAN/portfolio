@@ -53,6 +53,8 @@ export interface Project {
   tech?: string[];
   /** Featured projects get case-study treatment on the site. */
   featured: boolean;
+  /** Screenshot of the live site, under /public. */
+  image?: string;
 }
 
 export interface SkillGroup {

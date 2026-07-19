@@ -92,6 +92,11 @@ empathetic negotiation.
    Client portal serving thousands of MV Group clients: profile pages, happiness survey
    with chart results, activity booking, Paymob online payments. Next.js (v2; earlier
    version in React).
+   > ❓ **Mismatch to resolve:** the URL (and therefore the screenshot on the site) is the
+   > Mountain View *corporate* site, not The Lighthouse portal, which appears to be a
+   > separate/gated app. Either supply the portal URL, or retitle this entry to describe
+   > the Mountain View work. The card currently displays `mountainviewegypt.com` openly,
+   > so nothing is misrepresented, but the title and the image describe different things.
 4. **SpeakUp** — internal, no public link — Secure complaints platform (messages, voice
    notes, file attachments) audited by a neutral agency (IBS). React + PHP/MySQL.
 5. **Eyes and Birds** *(ongoing)* — Dubai real-estate broker site: premium property
@@ -108,8 +113,16 @@ Platform facts verified from the live sites 2026-07-19; role framing is a generi
 9. **Qasr Al-Awani** — https://www.qasralawani.net/ — kitchenware & home-appliances e-commerce across the GCC.
 10. **SACO** — https://www.saco.sa/ — Saudi Arabia's major home-improvement/hardware retailer, 30+ branches.
 
-> ❓ Which 3–4 are the flagship case studies for detail pages? Screenshots welcome;
-> for items 6–10 a one-liner each on what Mahmoud built/led is required (not invented).
+> ❓ For items 6-10, a one-liner each on what Mahmoud built/led is required
+> (not invented) to replace the placeholder framing.
+
+### Project imagery
+
+Screenshots of the live sites were captured automatically (Playwright, 1280x800,
+ad/tracker domains blocked) and committed to `public/images/projects/`. They are a
+point-in-time snapshot: re-run the capture when a client site is redesigned, or
+replace any file with a better hand-picked shot. SpeakUp and Eyes and Birds have no
+public URL, so they render a typographic monogram instead.
 
 ## Languages
 

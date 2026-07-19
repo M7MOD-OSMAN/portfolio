@@ -1,12 +1,13 @@
-import { profile, skillGroups, visibleProjects } from "@/content";
+import { profile, skillGroups } from "@/content";
 import { SiteHeader } from "@/components/site-header";
 import { Hero } from "@/components/sections/hero";
 import { Experience } from "@/components/sections/experience";
+import { Projects } from "@/components/sections/projects";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { Reveal } from "@/components/ui/reveal";
 
-// Projects and Skills below are still placeholder layouts;
-// their real designs land in the upcoming milestones.
+// The Skills section below is still a placeholder layout;
+// its real design lands in the next milestone.
 export default function Home() {
   return (
     <>
@@ -17,38 +18,7 @@ export default function Home() {
 
         <Experience />
 
-        <Section id="projects" className="scroll-mt-16 border-t border-edge">
-          <Reveal>
-            <SectionHeading>Projects</SectionHeading>
-          </Reveal>
-          <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
-            {visibleProjects.map((project, i) => (
-              <Reveal
-                key={project.name}
-                delay={i * 0.05}
-                className="flex flex-col gap-2 rounded-(--radius-surface) border border-edge bg-surface p-6"
-              >
-                {project.url ? (
-                  <a
-                    href={project.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="font-display text-lg font-bold tracking-tight hover:text-accent-ink"
-                  >
-                    {project.name}
-                  </a>
-                ) : (
-                  <span className="font-display text-lg font-bold tracking-tight">
-                    {project.name}
-                  </span>
-                )}
-                <p className="text-sm leading-relaxed text-muted">
-                  {project.description}
-                </p>
-              </Reveal>
-            ))}
-          </div>
-        </Section>
+        <Projects />
 
         <Section id="skills" className="scroll-mt-16 border-t border-edge">
           <Reveal>
