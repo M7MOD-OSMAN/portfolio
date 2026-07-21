@@ -8,6 +8,7 @@ import { profile } from "@/content";
 import { cn } from "@/lib/cn";
 
 const navItems = [
+  { label: "About", href: "#about" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
   { label: "Skills", href: "#skills" },

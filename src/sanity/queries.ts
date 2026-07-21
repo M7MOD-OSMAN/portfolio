@@ -43,6 +43,15 @@ export const educationQuery = defineQuery(`
   }
 `);
 
+/** Singleton: the projection is an array so it shares the `load` helper. */
+export const aboutQuery = defineQuery(`
+  *[_type == "about"] | order(_updatedAt desc) [0...1] {
+    "id": _id,
+    "body": coalesce(body, []),
+    backgroundWord
+  }
+`);
+
 export const skillGroupsQuery = defineQuery(`
   *[_type == "skillGroup"] | order(order asc, label asc) {
     "id": _id,

@@ -4,8 +4,19 @@ import type { Project } from "@/content";
 import { getFeaturedProjects, getOtherProjects } from "@/content/loaders";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { Reveal } from "@/components/ui/reveal";
+import { ScrubWord } from "@/components/motion/scrub-word";
 import { hostname } from "@/lib/url";
 import { cn } from "@/lib/cn";
+
+/**
+ * Card hover: a small lift and an accent edge. The transform lives here on a
+ * plain element rather than on the <Reveal> wrapper — motion/react writes an
+ * inline `transform` when the reveal settles, and an inline transform beats a
+ * Tailwind `hover:` transform class, so a lift applied to the reveal itself
+ * silently does nothing.
+ */
+const CARD_HOVER =
+  "transition duration-300 hover:-translate-y-1 hover:border-accent hover:shadow-[0_14px_40px_-20px_rgba(0,0,0,0.35)]";
 
 function Thumbnail({ project }: { project: Project }) {
   if (project.image) {
@@ -57,7 +68,12 @@ export async function Projects() {
   const [lead, ...rest] = featuredProjects;
 
   return (
-    <Section id="projects" className="scroll-mt-16 border-t border-edge">
+    <Section
+      id="projects"
+      className="relative isolate scroll-mt-16 border-t border-edge"
+    >
+      <ScrubWord word="SHIPPED" className="-z-10" />
+
       <Reveal>
         <SectionHeading>Selected work</SectionHeading>
       </Reveal>
@@ -66,75 +82,85 @@ export async function Projects() {
         {/* Lead project spans the row and splits horizontally. Absent when
             nothing is marked as featured in the CMS. */}
         {lead ? (
-          <Reveal className="group relative flex flex-col overflow-hidden rounded-(--radius-surface) border border-edge bg-surface md:col-span-2 md:flex-row">
-            <div className="relative aspect-[16/10] w-full overflow-hidden bg-surface-2 md:aspect-auto md:w-[55%]">
-              <Thumbnail project={lead} />
-            </div>
-            <div className="flex flex-1 flex-col gap-4 p-6 md:p-10">
-              <div>
-                <h3 className="font-display text-2xl font-bold tracking-tight">
-                  {lead.name}
-                </h3>
-                <p className="mt-3 max-w-[52ch] leading-relaxed text-muted">
-                  {lead.description}
-                </p>
+          <Reveal className="md:col-span-2">
+            <div
+              className={cn(
+                "group relative flex h-full flex-col overflow-hidden rounded-(--radius-surface) border border-edge bg-surface md:flex-row",
+                CARD_HOVER,
+              )}
+            >
+              <div className="relative aspect-[16/10] w-full overflow-hidden bg-surface-2 md:aspect-auto md:w-[55%]">
+                <Thumbnail project={lead} />
               </div>
-              {lead.highlights?.length ? (
-                <ul className="flex flex-col gap-2">
-                  {lead.highlights.map((highlight) => (
-                    <li
-                      key={highlight}
-                      className="max-w-[52ch] text-sm leading-relaxed text-muted"
+              <div className="flex flex-1 flex-col gap-4 p-6 md:p-10">
+                <div>
+                  <h3 className="font-display text-2xl font-bold tracking-tight">
+                    {lead.name}
+                  </h3>
+                  <p className="mt-3 max-w-[52ch] leading-relaxed text-muted">
+                    {lead.description}
+                  </p>
+                </div>
+                {lead.highlights?.length ? (
+                  <ul className="flex flex-col gap-2">
+                    {lead.highlights.map((highlight) => (
+                      <li
+                        key={highlight}
+                        className="max-w-[52ch] text-sm leading-relaxed text-muted"
+                      >
+                        {highlight}
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+                <div className="mt-auto flex flex-wrap items-center gap-2 pt-2">
+                  {lead.tech?.map((tech) => (
+                    <span
+                      key={tech}
+                      className="rounded-full border border-edge px-3 py-1 font-mono text-xs text-muted"
                     >
-                      {highlight}
-                    </li>
+                      {tech}
+                    </span>
                   ))}
-                </ul>
-              ) : null}
-              <div className="mt-auto flex flex-wrap items-center gap-2 pt-2">
-                {lead.tech?.map((tech) => (
-                  <span
-                    key={tech}
-                    className="rounded-full border border-edge px-3 py-1 font-mono text-xs text-muted"
-                  >
-                    {tech}
-                  </span>
-                ))}
+                </div>
+                <CardLink project={lead} />
               </div>
-              <CardLink project={lead} />
             </div>
           </Reveal>
         ) : null}
 
         {rest.map((project, index) => (
-          <Reveal
-            key={project.id ?? project.name}
-            delay={0.05 * (index + 1)}
-            className="group relative flex flex-col overflow-hidden rounded-(--radius-surface) border border-edge bg-surface"
-          >
-            <div className="relative aspect-[16/10] overflow-hidden bg-surface-2">
-              <Thumbnail project={project} />
-            </div>
-            <div className="flex flex-1 flex-col gap-4 p-6">
-              <div>
-                <h3 className="font-display text-xl font-bold tracking-tight">
-                  {project.name}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">
-                  {project.description}
-                </p>
+          <Reveal key={project.id ?? project.name} delay={0.05 * (index + 1)}>
+            <div
+              className={cn(
+                "group relative flex h-full flex-col overflow-hidden rounded-(--radius-surface) border border-edge bg-surface",
+                CARD_HOVER,
+              )}
+            >
+              <div className="relative aspect-[16/10] overflow-hidden bg-surface-2">
+                <Thumbnail project={project} />
               </div>
-              <div className="mt-auto flex flex-wrap items-center gap-2">
-                {project.tech?.map((tech) => (
-                  <span
-                    key={tech}
-                    className="rounded-full border border-edge px-3 py-1 font-mono text-xs text-muted"
-                  >
-                    {tech}
-                  </span>
-                ))}
+              <div className="flex flex-1 flex-col gap-4 p-6">
+                <div>
+                  <h3 className="font-display text-xl font-bold tracking-tight">
+                    {project.name}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">
+                    {project.description}
+                  </p>
+                </div>
+                <div className="mt-auto flex flex-wrap items-center gap-2">
+                  {project.tech?.map((tech) => (
+                    <span
+                      key={tech}
+                      className="rounded-full border border-edge px-3 py-1 font-mono text-xs text-muted"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+                <CardLink project={project} />
               </div>
-              <CardLink project={project} />
             </div>
           </Reveal>
         ))}

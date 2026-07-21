@@ -19,6 +19,7 @@ import { fileURLToPath } from "node:url";
 import { education, roles } from "../src/content/experience.ts";
 import { projects } from "../src/content/projects.ts";
 import { skillGroups } from "../src/content/skills.ts";
+import { about } from "../src/content/about.ts";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const DRY_RUN = process.argv.includes("--dry");
@@ -49,13 +50,20 @@ const client = createClient({
   useCdn: false,
 });
 
-/** Stable, readable document id derived from a natural key. */
+/**
+ * Stable, readable document id derived from a natural key.
+ *
+ * Joined with `-`, never `.`: Sanity treats a dot as a path separator, and the
+ * default public read grant is scoped to `_id in path("*")`, which matches only
+ * single-segment ids. A `role.foo` id is read as nested and stays invisible to
+ * unauthenticated readers — i.e. to the site itself.
+ */
 function idFor(type: string, key: string) {
   const slug = key
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "");
-  return `${type}.${slug}`;
+  return `${type}-${slug}`;
 }
 
 /** Uploads a /public screenshot once and returns an image field value. */
@@ -151,6 +159,16 @@ async function seed() {
       order: index,
     });
   }
+
+  // Singleton: a fixed id, so re-seeding updates the one About document
+  // rather than accumulating duplicates the way a name-derived id would.
+  console.log("\nAbout");
+  documents.push({
+    _id: "about",
+    _type: "about",
+    body: about.body,
+    backgroundWord: about.backgroundWord,
+  });
 
   if (DRY_RUN) {
     console.log(`\nDry run: ${documents.length} documents would be written.`);

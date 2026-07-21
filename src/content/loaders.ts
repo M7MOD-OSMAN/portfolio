@@ -7,16 +7,18 @@ import { client } from "@/sanity/client";
 import { CONTENT_TAG, revalidateSeconds } from "@/sanity/env";
 import { cardImageUrl } from "@/sanity/image";
 import {
+  aboutQuery,
   educationQuery,
   projectsQuery,
   rolesQuery,
   skillGroupsQuery,
 } from "@/sanity/queries";
 
+import { about as fallbackAbout } from "./about";
 import { education as fallbackEducation, roles as fallbackRoles } from "./experience";
 import { projects as fallbackProjects } from "./projects";
 import { skillGroups as fallbackSkillGroups } from "./skills";
-import type { Education, Project, Role, SkillGroup } from "./types";
+import type { About, Education, Project, Role, SkillGroup } from "./types";
 
 /**
  * The CMS is the source of truth, but every loader falls back to the content
@@ -105,6 +107,15 @@ export const getEducation = cache(async (): Promise<Education[]> => {
     fallbackEducation,
   );
   return data;
+});
+
+/**
+ * Singleton. `load` works in arrays, so the query returns a one-element slice
+ * and an empty result falls through to the bundled copy like everything else.
+ */
+export const getAbout = cache(async (): Promise<About> => {
+  const { data } = await load<About>("about", aboutQuery, [fallbackAbout]);
+  return data[0] ?? fallbackAbout;
 });
 
 export const getSkillGroups = cache(async (): Promise<SkillGroup[]> => {

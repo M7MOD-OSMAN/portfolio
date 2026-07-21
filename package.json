@@ -5,7 +5,7 @@
   "description": "Personal portfolio of Mahmoud Othman, Frontend Engineer.",
   "author": "Mahmoud Othman <m7mod.osman.m7mod@gmail.com>",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --webpack",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
@@ -17,6 +17,8 @@
     "@sanity/image-url": "^2.1.1",
     "@sanity/vision": "^6.5.0",
     "clsx": "^2.1.1",
+    "gsap": "^3.15.0",
+    "lenis": "^1.3.25",
     "motion": "^12.42.2",
     "next": "16.2.10",
     "next-sanity": "^13.1.3",

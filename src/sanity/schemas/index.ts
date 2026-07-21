@@ -1,5 +1,6 @@
 import type { SchemaTypeDefinition } from "sanity";
 
+import { about } from "./about";
 import { education } from "./education";
 import { project } from "./project";
 import { role } from "./role";
@@ -10,4 +11,5 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   role,
   education,
   skillGroup,
+  about,
 ];

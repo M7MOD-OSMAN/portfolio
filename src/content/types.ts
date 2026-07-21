@@ -68,6 +68,19 @@ export interface Project {
   blurDataURL?: string;
 }
 
+export interface About {
+  /** Sanity document id. Absent on bundled fallback content. */
+  id?: string;
+  /** Body copy, one entry per paragraph. */
+  body: string[];
+  /**
+   * The word scrubbed across the section background as you scroll. Kept
+   * editable because it is copy, not decoration: it should echo the paragraph
+   * next to it, and that changes when the paragraph changes.
+   */
+  backgroundWord: string;
+}
+
 export interface SkillGroup {
   /** Sanity document id. Absent on bundled fallback content. */
   id?: string;

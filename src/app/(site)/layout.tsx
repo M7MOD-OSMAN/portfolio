@@ -1,9 +1,10 @@
 import { ThemeProvider } from "@/components/theme-provider";
 import { StructuredData } from "@/components/structured-data";
+import { SmoothScroll } from "@/components/motion/smooth-scroll";
 
 /**
  * Chrome for the public site. Lives in a route group so `/studio` can render
- * without the theme provider, skip link or JSON-LD.
+ * without the theme provider, skip link, JSON-LD or smooth scrolling.
  */
 export default function SiteLayout({
   children,
@@ -18,6 +19,7 @@ export default function SiteLayout({
       >
         Skip to content
       </a>
+      <SmoothScroll />
       <ThemeProvider>{children}</ThemeProvider>
       <StructuredData />
     </>
