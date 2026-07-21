@@ -6,12 +6,13 @@ export const projects: Project[] = [
     url: "https://almaidan.com/",
     description:
       "Real-time sports platform (similar to SofaScore) with live scores and match schedules powered by complex third-party API integrations.",
+    category: "Full-stack platform",
     highlights: [
       "Architected the frontend for sub-second live-data updates.",
       "Led API schema design with backend teams for highly optimized data structures.",
       "Built a full CMS and admin dashboard with multi-format content management (media, polls) and a granular RBAC permission system.",
     ],
-    tech: ["Next.js", "TypeScript", "Real-time APIs", "RBAC"],
+    tech: ["Next.js", "React", "TypeScript", "Redux", "SWR", "Real-time APIs", "RBAC"],
     featured: true,
     image: "/images/projects/almaidan.jpg",
   },
@@ -20,7 +21,8 @@ export const projects: Project[] = [
     url: "https://www.skyloov.com/",
     description:
       "Modern real-estate platform for property discovery and management across the UAE: rich-media listings, dynamic search, and advanced filtering, built for scale and performance.",
-    tech: ["React", "Next.js", "GraphQL"],
+    category: "Real-estate platform",
+    tech: ["Next.js", "React", "TypeScript", "GraphQL", "Tailwind CSS"],
     featured: true,
     image: "/images/projects/skyloov.jpg",
   },
@@ -32,7 +34,8 @@ export const projects: Project[] = [
     url: "https://www.mountainviewegypt.com/",
     description:
       "Client portal serving thousands of MV Group clients: personalized profile pages, a happiness survey with detailed chart results, activity booking, and online payments through Paymob. Built with Next.js (earlier version in React).",
-    tech: ["Next.js", "React", "Paymob"],
+    category: "Client portal",
+    tech: ["Next.js", "React", "TypeScript", "SWR", "Paymob"],
     featured: true,
     image: "/images/projects/lighthouse.jpg",
   },
@@ -41,6 +44,8 @@ export const projects: Project[] = [
     url: "https://speakup.mountainviewegypt.com/",
     description:
       "Secure internal complaints platform where employees can raise concerns about anyone, including the CEO, via messages, voice notes, and file attachments, audited by a neutral agency (IBS). React frontend with a PHP/MySQL backend.",
+    category: "Internal tool",
+    tech: ["React", "Redux", "PHP", "MySQL"],
     featured: false,
     image: "/images/projects/speakup.png",
   },
@@ -48,6 +53,8 @@ export const projects: Project[] = [
     name: "Eyes and Birds",
     description:
       "Website for a Dubai real-estate broker: premium property portfolio focused on buying, renting, and investment.",
+    category: "Marketing site",
+    tech: ["Next.js", "React", "Tailwind CSS"],
     featured: false,
   },
   // PLACEHOLDER descriptions below: what each platform is (verified from the
@@ -58,6 +65,8 @@ export const projects: Project[] = [
     url: "https://www.parisgalleryme.com/",
     description:
       "Frontend development for the e-commerce platform of Paris Gallery, a Middle East luxury retailer offering perfumes, watches, jewelry, and beauty products.",
+    category: "E-commerce",
+    tech: ["React", "Redux", "SWR", "Tailwind CSS"],
     featured: false,
     image: "/images/projects/paris-gallery.jpg",
   },
@@ -66,6 +75,8 @@ export const projects: Project[] = [
     url: "https://www.alkhunaizan.sa/",
     description:
       "Frontend development for the online store of Al-Khunaizan, a Saudi retailer specialized in air conditioning and electrical home appliances since 1988.",
+    category: "E-commerce",
+    tech: ["React", "Redux", "SWR"],
     featured: false,
     image: "/images/projects/alkhunaizan.jpg",
   },
@@ -74,6 +85,8 @@ export const projects: Project[] = [
     url: "https://innovapharmacy.com/",
     description:
       "Frontend development for Inovva Pharmacy, an online pharmacy in Saudi Arabia offering medicines, vitamins, and personal-care products with fast nationwide delivery.",
+    category: "E-commerce",
+    tech: ["React", "Redux", "SWR"],
     featured: false,
     image: "/images/projects/inovva.jpg",
   },
@@ -82,6 +95,8 @@ export const projects: Project[] = [
     url: "https://www.qasralawani.net/",
     description:
       "Frontend development for the e-commerce platform of Qasr Al-Awani, a kitchenware and home-appliances retailer operating across the GCC.",
+    category: "E-commerce",
+    tech: ["React", "Redux", "SWR"],
     featured: false,
     image: "/images/projects/qasr-alawani.jpg",
   },
@@ -90,6 +105,8 @@ export const projects: Project[] = [
     url: "https://www.saco.sa/",
     description:
       "Frontend development for the online store of SACO, Saudi Arabia's major home-improvement and hardware retailer with 30+ branches.",
+    category: "E-commerce",
+    tech: ["React", "Redux", "SWR", "Tailwind CSS"],
     featured: false,
     image: "/images/projects/saco.jpg",
   },
