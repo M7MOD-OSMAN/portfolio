@@ -1,19 +1,29 @@
-import { profile, roles, skillGroups } from "@/content";
+import { profile } from "@/content";
+import { getCurrentRole, getSkillGroups } from "@/content/loaders";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { Reveal } from "@/components/ui/reveal";
+import { ScrubWord } from "@/components/motion/scrub-word";
 import { cn } from "@/lib/cn";
 
-export function Skills() {
-  const currentRole = roles.find((role) => role.end === null);
+export async function Skills() {
+  const [skillGroups, currentRole] = await Promise.all([
+    getSkillGroups(),
+    getCurrentRole(),
+  ]);
 
   return (
-    <Section id="skills" className="scroll-mt-16 border-t border-edge">
+    <Section
+      id="skills"
+      className="relative isolate scroll-mt-16 border-t border-edge"
+    >
+      <ScrubWord word="STACK" className="-z-10" />
+
       <Reveal>
         <SectionHeading>Skills</SectionHeading>
       </Reveal>
 
       <div className="mt-12 grid gap-x-16 gap-y-12 md:grid-cols-[minmax(0,16rem)_minmax(0,1fr)]">
-        <div className="md:sticky md:top-28 md:self-start">
+        <Reveal direction="left" className="md:sticky md:top-28 md:self-start">
           <dl className="flex flex-col gap-6 text-sm">
             <div>
               <dt className="font-mono text-xs tracking-wide text-muted">
@@ -45,7 +55,7 @@ export function Skills() {
               </dd>
             </div>
           </dl>
-        </div>
+        </Reveal>
 
         <div className="flex flex-col">
           {skillGroups.map((group, index) => {
@@ -53,7 +63,7 @@ export function Skills() {
 
             return (
               <Reveal
-                key={group.label}
+                key={group.id ?? group.label}
                 delay={index * 0.05}
                 className={cn(
                   "flex flex-col gap-4 py-7 md:flex-row md:gap-10",

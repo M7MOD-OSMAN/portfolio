@@ -1,13 +1,22 @@
-import { education, profile, roles, skillGroups } from "@/content";
+import { profile } from "@/content";
+import {
+  getCurrentRole,
+  getEducation,
+  getSkillGroups,
+} from "@/content/loaders";
 import { siteUrl } from "@/lib/site";
 
 /**
  * Person schema so search engines and AI summarisers can resolve who this
- * site is about. Every value is derived from the typed content layer, so the
- * markup cannot drift from what the page displays.
+ * site is about. Every value is derived from the same content layer the page
+ * renders from, so the markup cannot drift from what visitors see.
  */
-export function StructuredData() {
-  const currentRole = roles.find((role) => role.end === null);
+export async function StructuredData() {
+  const [currentRole, education, skillGroups] = await Promise.all([
+    getCurrentRole(),
+    getEducation(),
+    getSkillGroups(),
+  ]);
 
   const person = {
     "@context": "https://schema.org",
@@ -41,7 +50,7 @@ export function StructuredData() {
   return (
     <script
       type="application/ld+json"
-      // Values come from local content, not user input.
+      // Values come from the content layer, not user input.
       dangerouslySetInnerHTML={{ __html: JSON.stringify(person) }}
     />
   );

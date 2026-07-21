@@ -24,6 +24,8 @@ export interface Profile {
 }
 
 export interface Role {
+  /** Sanity document id. Absent on bundled fallback content. */
+  id?: string;
   company: string;
   location: string;
   title: string;
@@ -38,6 +40,8 @@ export interface Role {
 }
 
 export interface Education {
+  /** Sanity document id. Absent on bundled fallback content. */
+  id?: string;
   institution: string;
   degree: string;
   start: string;
@@ -45,6 +49,8 @@ export interface Education {
 }
 
 export interface Project {
+  /** Sanity document id. Absent on bundled fallback content. */
+  id?: string;
   name: string;
   url?: string;
   /** What the project is and what Mahmoud built/led. */
@@ -53,11 +59,31 @@ export interface Project {
   tech?: string[];
   /** Featured projects get case-study treatment on the site. */
   featured: boolean;
-  /** Screenshot of the live site, under /public. */
+  /**
+   * Screenshot of the live site: a path under /public for bundled content, or
+   * a Sanity CDN URL once the project is managed in the CMS.
+   */
   image?: string;
+  /** Tiny base64 preview from Sanity's image metadata (CMS content only). */
+  blurDataURL?: string;
+}
+
+export interface About {
+  /** Sanity document id. Absent on bundled fallback content. */
+  id?: string;
+  /** Body copy, one entry per paragraph. */
+  body: string[];
+  /**
+   * The word scrubbed across the section background as you scroll. Kept
+   * editable because it is copy, not decoration: it should echo the paragraph
+   * next to it, and that changes when the paragraph changes.
+   */
+  backgroundWord: string;
 }
 
 export interface SkillGroup {
+  /** Sanity document id. Absent on bundled fallback content. */
+  id?: string;
   label: string;
   items: string[];
 }

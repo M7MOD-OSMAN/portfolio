@@ -1,6 +1,7 @@
 import { profile } from "@/content";
 import { SiteHeader } from "@/components/site-header";
 import { Hero } from "@/components/sections/hero";
+import { About } from "@/components/sections/about";
 import { Experience } from "@/components/sections/experience";
 import { Projects } from "@/components/sections/projects";
 import { Skills } from "@/components/sections/skills";
@@ -13,6 +14,7 @@ export default function Home() {
 
       <main id="main" className="flex-1">
         <Hero />
+        <About />
         <Experience />
         <Projects />
         <Skills />

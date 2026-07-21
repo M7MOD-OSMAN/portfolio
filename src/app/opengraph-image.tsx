@@ -1,14 +1,15 @@
 import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
-import { profile, roles } from "@/content";
+import { profile } from "@/content";
+import { getCurrentRole } from "@/content/loaders";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 export const alt = `${profile.name} - ${profile.title}`;
 
 export default async function OpengraphImage() {
-  const currentRole = roles.find((role) => role.end === null);
+  const currentRole = await getCurrentRole();
 
   const portrait = await readFile(
     path.join(process.cwd(), "public", profile.portraitSrc),

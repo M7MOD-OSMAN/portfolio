@@ -95,9 +95,3 @@ export const projects: Project[] = [
   },
 ];
 
-/** Projects ready to display (have a real description). */
-export const visibleProjects = projects.filter((p) => p.description !== "");
-
-export const featuredProjects = visibleProjects.filter((p) => p.featured);
-
-export const otherProjects = visibleProjects.filter((p) => !p.featured);

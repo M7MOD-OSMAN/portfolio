@@ -65,8 +65,38 @@
   --radius-control: 0.625rem;
 }
 
-html {
+/*
+ * Native smooth scrolling, but only while Lenis is not running. Lenis adds
+ * `.lenis` to <html> on mount; leaving CSS smooth scroll on at the same time
+ * makes the two fight over the scroll position and anchor jumps stutter.
+ *
+ * Lenis 1.3 dropped the `scroll-behavior: auto !important` rule its own
+ * stylesheet used to ship, so this has to be handled here.
+ *
+ * The `:not()` also means reduced-motion users — who never get a Lenis
+ * instance — keep the native behaviour, which the media query below then
+ * flattens to `auto`.
+ */
+html:not(.lenis) {
   scroll-behavior: smooth;
+}
+
+/* Lenis: required for the page to scroll normally while it is active. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+
+.lenis [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
 }
 
 /*
@@ -88,6 +118,43 @@ html {
 
 .animate-rise {
   animation: rise 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/*
+ * Signal-grid puzzle (About section).
+ *
+ * `DESIGN.md` bans infinite loops "by default" — these are the exception it
+ * leaves room for. The phase difference between two cycle lengths IS the
+ * puzzle's game state, not decoration: every node breathes on a 1.8s cycle and
+ * the three targets run at 2.9s, so they drift in and out of sync with the
+ * field around them. Remove the loop and there is nothing to find.
+ *
+ * The reduced-motion block at the end of this file flattens both, which is why
+ * the component also ships a static opacity difference for the targets. See
+ * `signal-grid.tsx` — the puzzle stays solvable with no animation at all.
+ */
+@keyframes phase-breathe {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Wrong-guess feedback. One short nudge, no colour change. */
+@keyframes phase-nudge {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-3px);
+  }
+  75% {
+    transform: translateX(3px);
+  }
 }
 
 body {
