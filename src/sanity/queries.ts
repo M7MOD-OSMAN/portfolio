@@ -11,6 +11,7 @@ export const projectsQuery = defineQuery(`
     name,
     url,
     description,
+    category,
     highlights,
     tech,
     "featured": coalesce(featured, false),

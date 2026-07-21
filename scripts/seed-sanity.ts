@@ -109,6 +109,7 @@ async function seed() {
       name: project.name,
       url: project.url,
       description: project.description,
+      category: project.category,
       highlights: project.highlights,
       tech: project.tech,
       featured: project.featured,

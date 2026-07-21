@@ -24,6 +24,12 @@ export const project = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: "category",
+      type: "string",
+      description:
+        "Short domain label shown on the card, e.g. 'E-commerce' or 'Client portal'.",
+    }),
+    defineField({
       name: "highlights",
       type: "array",
       of: [{ type: "text" }],

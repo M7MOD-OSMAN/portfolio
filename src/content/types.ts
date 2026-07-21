@@ -55,6 +55,8 @@ export interface Project {
   url?: string;
   /** What the project is and what Mahmoud built/led. */
   description: string;
+  /** Short domain label shown on the card, e.g. "E-commerce". */
+  category?: string;
   highlights?: string[];
   tech?: string[];
   /** Featured projects get case-study treatment on the site. */
